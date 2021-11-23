@@ -2,3 +2,6 @@
 !.gitignore
 .vscode
 .idea
+/target/
+/.bsp/
+/project/

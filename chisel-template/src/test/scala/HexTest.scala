@@ -1,4 +1,4 @@
-package fetch
+package cpu
 
 import org.scalatest._
 import chiseltest._
