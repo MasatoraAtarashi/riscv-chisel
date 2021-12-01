@@ -48,42 +48,42 @@ class Core extends Module {
 
   val csignals = ListLookup(inst, List(ALU_X, OP1_RS1, OP2_RS2, MEN_X, REN_X, WB_X),
     Array(
-      LW   -> List(ALU_ADD, OP1_RS1, OP2_IMI, MEN_X),
-      SW   -> List(ALU_ADD, OP1_RS1, OP2_IMS, MEN_S,  REN_X, WB_X),
-      ADD  -> List(ALU_ADD, OP1_RS1, OP2_RS2, MEN_X , REN_S, WB_ALU),
-      ADDI -> List(ALU_ADD, OP1_RS1, OP2_IMI, MEN_X , REN_S, WB_ALU),
-      SUB  -> List(ALU_SUB, OP1_RS1, OP2_RS2, MEN_X , REN_S, WB_ALU),
-      AND  -> List(ALU_AND, OP1_RS1, OP2_RS2, MEN_X , REN_S, WB_ALU),
-      OR   -> List(ALU_OR , OP1_RS1, OP2_RS2, MEN_X , REN_S, WB_ALU),
-      XOR  -> List(ALU_XOR, OP1_RS1, OP2_RS2, MEN_X , REN_S, WB_ALU),
-      ANDI -> List(ALU_AND, OP1_RS1, OP2_IMI, MEN_X , REN_S, WB_ALU),
-      ORI  -> List(ALU_OR , OP1_RS1, OP2_IMI, MEN_X , REN_S, WB_ALU),
-      XORI -> List(ALU_XOR, OP1_RS1, OP2_IMI, MEN_X , REN_S, WB_ALU),
-      SLL  -> List(ALU_SLL, OP1_RS1, OP2_RS2, MEN_X , REN_S, WB_ALU),
-      SRL  -> List(ALU_SRL, OP1_RS1, OP2_RS2, MEN_X , REN_S, WB_ALU),
-      SRA  -> List(ALU_SRA, OP1_RS1, OP2_RS2, MEN_X , REN_S, WB_ALU),
-      SLLI -> List(ALU_SLL, OP1_RS1, OP2_IMI, MEN_X , REN_S, WB_ALU),
-      SRLI -> List(ALU_SRL, OP1_RS1, OP2_IMI, MEN_X , REN_S, WB_ALU),
-      SRAI -> List(ALU_SRA, OP1_RS1, OP2_IMI, MEN_X , REN_S, WB_ALU)
-      SLT  -> List(ALU_SLT, OP1_RS1, OP2_RS2, MEN_X , REN_S, WB_ALU),
-      SLTU -> List(ALU_SLTU, OP1_RS1, OP2_RS2, MEN_X , REN_S, WB_ALU),
-      SLTI -> List(ALU_SLT, OP1_RS1, OP2_IMI, MEN_X , REN_S, WB_ALU),
+      LW    -> List(ALU_ADD,  OP1_RS1, OP2_IMI, MEN_X),
+      SW    -> List(ALU_ADD,  OP1_RS1, OP2_IMS, MEN_S,  REN_X, WB_X),
+      ADD   -> List(ALU_ADD,  OP1_RS1, OP2_RS2, MEN_X , REN_S, WB_ALU),
+      ADDI  -> List(ALU_ADD,  OP1_RS1, OP2_IMI, MEN_X , REN_S, WB_ALU),
+      SUB   -> List(ALU_SUB,  OP1_RS1, OP2_RS2, MEN_X , REN_S, WB_ALU),
+      AND   -> List(ALU_AND,  OP1_RS1, OP2_RS2, MEN_X , REN_S, WB_ALU),
+      OR    -> List(ALU_OR ,  OP1_RS1, OP2_RS2, MEN_X , REN_S, WB_ALU),
+      XOR   -> List(ALU_XOR,  OP1_RS1, OP2_RS2, MEN_X , REN_S, WB_ALU),
+      ANDI  -> List(ALU_AND,  OP1_RS1, OP2_IMI, MEN_X , REN_S, WB_ALU),
+      ORI   -> List(ALU_OR ,  OP1_RS1, OP2_IMI, MEN_X , REN_S, WB_ALU),
+      XORI  -> List(ALU_XOR,  OP1_RS1, OP2_IMI, MEN_X , REN_S, WB_ALU),
+      SLL   -> List(ALU_SLL,  OP1_RS1, OP2_RS2, MEN_X , REN_S, WB_ALU),
+      SRL   -> List(ALU_SRL,  OP1_RS1, OP2_RS2, MEN_X , REN_S, WB_ALU),
+      SRA   -> List(ALU_SRA,  OP1_RS1, OP2_RS2, MEN_X , REN_S, WB_ALU),
+      SLLI  -> List(ALU_SLL,  OP1_RS1, OP2_IMI, MEN_X , REN_S, WB_ALU),
+      SRLI  -> List(ALU_SRL,  OP1_RS1, OP2_IMI, MEN_X , REN_S, WB_ALU),
+      SRAI  -> List(ALU_SRA,  OP1_RS1, OP2_IMI, MEN_X , REN_S, WB_ALU)
+      SLT   -> List(ALU_SLT,  OP1_RS1, OP2_RS2, MEN_X , REN_S, WB_ALU),
+      SLTU  -> List(ALU_SLTU, OP1_RS1, OP2_RS2, MEN_X , REN_S, WB_ALU),
+      SLTI  -> List(ALU_SLT,  OP1_RS1, OP2_IMI, MEN_X , REN_S, WB_ALU),
       SLTIU -> List(ALU_SLTU, OP1_RS1, OP2_IMI, MEN_X , REN_S, WB_ALU),
-      BEQ  -> List(BR_BEQ, OP1_RS1, OP2_RS2, MEN_X , REN_X, WB_X),
-      BNE  -> List(BR_BNE, OP1_RS1, OP2_RS2, MEN_X , REN_X, WB_X),
-      BGE  -> List(BR_BGE, OP1_RS1, OP2_RS2, MEN_X , REN_X, WB_X),
-      BGEU -> List(BR_BGEU, OP1_RS1, OP2_RS2, MEN_X , REN_X, WB_X),
-      BLT  -> List(BR_BLT, OP1_RS1, OP2_RS2, MEN_X , REN_X, WB_X),
-      BLTU -> List(BR_BLTU, OP1_RS1, OP2_RS2, MEN_X , REN_X, WB_X),
-      JAL  -> List(ALU_ADD, OP1_PC, OP2_IMJ, MEN_X , REN_S, WB_PC),
-      JALR -> List(ALU_JALR, OP1_RS1, OP2_IMI, MEN_X , REN_S, WB_PC)
+      BEQ   -> List(BR_BEQ,   OP1_RS1, OP2_RS2, MEN_X , REN_X, WB_X),
+      BNE   -> List(BR_BNE,   OP1_RS1, OP2_RS2, MEN_X , REN_X, WB_X),
+      BGE   -> List(BR_BGE,   OP1_RS1, OP2_RS2, MEN_X , REN_X, WB_X),
+      BGEU  -> List(BR_BGEU,  OP1_RS1, OP2_RS2, MEN_X , REN_X, WB_X),
+      BLT   -> List(BR_BLT,   OP1_RS1, OP2_RS2, MEN_X , REN_X, WB_X),
+      BLTU  -> List(BR_BLTU,  OP1_RS1, OP2_RS2, MEN_X , REN_X, WB_X),
+      JAL   -> List(ALU_ADD,  OP1_PC,  OP2_IMJ, MEN_X , REN_S, WB_PC),
+      JALR  -> List(ALU_JALR, OP1_RS1, OP2_IMI, MEN_X , REN_S, WB_PC)
     )
   )
   val exe_fun :: op1_sel :: op2_sel :: mem_wen :: rf_web :: wb_sel :: Nil = csignals
 
   val op1_data = MuxCase(0.U(WORD_LEN.W), Seq(
     (op1_sel === OP1_RS1) -> rs1_data,
-    (op1_sel === OP1_PC) -> pc_reg
+    (op1_sel === OP1_PC)  -> pc_reg
   ))
   val op2_data = MuxCase(0.U(WORD_LEN.W), Seq(
     (op2_sel === OP2_RS2) -> rs2_data,
@@ -94,15 +94,15 @@ class Core extends Module {
 
   // EX Stage
   alu_out := MuxCase(0.U(WORD_LEN.W), Seq(
-    (exe_fun === ALU_ADD) -> (op1_data + op2_data),
-    (exe_fun === ALU_SUB) -> (op1_data - op2_data),
-    (exe_fun === ALU_AND) -> (op1_data & op2_data),
-    (exe_fun === ALU_OR) -> (op1_data | op2_data),
-    (exe_fun === ALU_XOR) -> (op1_data ^ op2_data),
-    (exe_fun === ALU_SLL) -> (op1_data << op2_data(4, 0))(31, 0),
-    (exe_fun === ALU_SRL) -> (op1_data >> op2_data(4, 0)).asUInt(),
-    (exe_fun === ALU_SRA) -> (op1_data.asSInt() >> op2_data(4, 0)).asUInt(),
-    (exe_fun === ALU_SLT) -> (op1_data.asSInt() < op2_data.asSInt()).asUInt(),
+    (exe_fun === ALU_ADD)  -> (op1_data + op2_data),
+    (exe_fun === ALU_SUB)  -> (op1_data - op2_data),
+    (exe_fun === ALU_AND)  -> (op1_data & op2_data),
+    (exe_fun === ALU_OR)   -> (op1_data | op2_data),
+    (exe_fun === ALU_XOR)  -> (op1_data ^ op2_data),
+    (exe_fun === ALU_SLL)  -> (op1_data << op2_data(4, 0))(31, 0),
+    (exe_fun === ALU_SRL)  -> (op1_data >> op2_data(4, 0)).asUInt(),
+    (exe_fun === ALU_SRA)  -> (op1_data.asSInt() >> op2_data(4, 0)).asUInt(),
+    (exe_fun === ALU_SLT)  -> (op1_data.asSInt() < op2_data.asSInt()).asUInt(),
     (exe_fun === ALU_SLTU) -> (op1_data < op2_data).asUInt(),
     (exe_fun === ALU_JALR) -> (op1_data + op2_data) & ~1.U(WORD_LEN.W)
   ))
